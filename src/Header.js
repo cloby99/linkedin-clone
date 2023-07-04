@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.css'
 import SearchIcon from '@mui/icons-material/Search'
-import logo from './logo.png'
+import logo from './img/logo.png'
 import HeaderOption from './HeaderOption'
 import HomeIcon from '@mui/icons-material/Home'
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
