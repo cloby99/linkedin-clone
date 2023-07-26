@@ -12,16 +12,16 @@
 .sidebar__avatar{
     margin-bottom: 10px;
     border-radius: 100%;
-    border: solid 10px white;
+    border: solid 5px white;
 }
 
 .sidebar__top > h4 {
     color: gray;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .sidebar__top > h2 {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .sidebar__top{
