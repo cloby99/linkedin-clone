@@ -1,6 +1,6 @@
 import React from 'react'
 import './Login.css'
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from './firebase';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,7 +15,20 @@ function Login() {
 
     const loginToApp = (e) => {
         e.preventDefault();
-        // Add login logic here
+        
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            dispatch(
+                login({
+                    email: user.email,
+                    uid: user.uid,
+                    displayName: user.displayName,
+                    profileUrl: user.photoURL,
+                })
+            );
+        })
+        .catch((error) => alert(error.message));
     };
 
     const register = () => {
