@@ -6,7 +6,6 @@ import SubscriptionsIcon from "@mui/icons-material/Subscriptions"
 import EventNoteIcon from "@mui/icons-material/EventNote"
 import CalendarViewDayIcon from "@mui/icons-material/CalendarViewDay"
 
-// import { collection, addDoc, getDocs } from "firebase/firestore";
 import { collection, onSnapshot, serverTimestamp, addDoc, query, orderBy } from 'firebase/firestore';
 import { db } from './firebase' 
 
@@ -16,47 +15,51 @@ import { db } from './firebase'
 
 import InputOption from './InputOption';
 import Post from './Post';
+import { useSelector } from 'react-redux'
+import { selectUser } from './features/userSlice'
 
 
 function Feed() {
 
-    const[input, setInput] = useState('');
-    const[posts, setPosts] = useState([]);
+  const user = useSelector(selectUser);
 
-    useEffect(() => {
-        // Create a query for the 'posts' collection, order by 'timestamp' in descending order
-        const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
-      
-        // Subscribe to the query and update the 'posts' state whenever there's a change
-        const unsubscribe = onSnapshot(q, (snapshot) =>
-          setPosts(
-            snapshot.docs.map((doc) => ({
-              id: doc.id,
-              data: doc.data(),
-            }))
-          )
-        );
-      
-        return () => unsubscribe(); // Unsubscribe when the component unmounts
-      }, []);
+  const[input, setInput] = useState('');
+  const[posts, setPosts] = useState([]);
 
-      const sendPost = async (e) => {
-        e.preventDefault();
-      
-        try {
-          await addDoc(collection(db, 'posts'), {
-            name: 'Anuradha Basnayake',
-            description: 'This is a test',
-            message: input,
-            photoUrl: '',
-            timestamp: serverTimestamp(),
-          });
-        } catch (error) {
-          console.error('Error adding document: ', error);
-        }
+  useEffect(() => {
+      // Create a query for the 'posts' collection, order by 'timestamp' in descending order
+      const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
+    
+      // Subscribe to the query and update the 'posts' state whenever there's a change
+      const unsubscribe = onSnapshot(q, (snapshot) =>
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+    
+      return () => unsubscribe(); // Unsubscribe when the component unmounts
+    }, []);
 
-        setInput("");
-      };
+    const sendPost = async (e) => {
+      e.preventDefault();
+    
+      try {
+        await addDoc(collection(db, 'posts'), {
+          name: user.displayName,
+          description: user.email,
+          message: input,
+          photoUrl: user.photoUrl || "",
+          timestamp: serverTimestamp(),
+        });
+      } catch (error) {
+        console.error('Error adding document: ', error);
+      }
+
+      setInput("");
+    };
 
 
   return (

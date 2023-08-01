@@ -1,3 +1,4 @@
+// userSlice.js
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchCount } from './counterAPI';
 
@@ -6,7 +7,7 @@ const initialState = {
 };
 
 export const incrementAsync = createAsyncThunk(
-  'counter/fetchCount',
+  'user/fetchCount', // Use 'user' instead of 'counter' in the action type
   async (amount) => {
     const response = await fetchCount(amount);
     // The value we return becomes the `fulfilled` action payload
@@ -21,7 +22,6 @@ export const userSlice = createSlice({
     login: (state, action) => {
       state.user = action.payload;
     },
-    
     logout: (state) => {
       state.user = null;
     },
