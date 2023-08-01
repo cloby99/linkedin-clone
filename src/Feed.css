@@ -1,7 +1,14 @@
 .feed {
-    flex: 0.6;
+    /* flex: 0.6; */
+    width: 40rem;
     margin: 0 20px;
 }
+
+/* .middle__line {
+    height: 0.1px;
+    background-color: gray;
+    color: gray;
+} */
 
 .feed__inputContainer {
     background-color: white;
@@ -43,3 +50,10 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+
+
+/* hr{
+    color: #9e9d9d;
+    height: 0.1px;
+} */

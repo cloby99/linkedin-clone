@@ -9,14 +9,11 @@ import CalendarViewDayIcon from "@mui/icons-material/CalendarViewDay"
 import { collection, onSnapshot, serverTimestamp, addDoc, query, orderBy } from 'firebase/firestore';
 import { db } from './firebase' 
 
-
-
-
-
 import InputOption from './InputOption';
 import Post from './Post';
 import { useSelector } from 'react-redux'
 import { selectUser } from './features/userSlice'
+import FlipMove from 'react-flip-move'
 
 
 function Feed() {
@@ -80,17 +77,21 @@ function Feed() {
             </div>
 
         </div>
+        <hr className='middle__line'/>
+        <br />
         {/* Posts */}
-        {posts.map(({ id, data: { name, description, message, photoUrl}}) => (
-            <Post
-                key={id}
-                name={name}
-                description={description}
-                message={message}
-                photoUrl={photoUrl}
-            />
-        ))
-        }
+        <FlipMove>
+          {posts.map(({ id, data: { name, description, message, photoUrl}}) => (
+              <Post
+                  key={id}
+                  name={name}
+                  description={description}
+                  message={message}
+                  photoUrl={photoUrl}
+              />
+          ))}
+        </FlipMove>
+        
 
     </div>
   )
