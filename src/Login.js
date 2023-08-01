@@ -62,8 +62,8 @@ function Login() {
       <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="" />
 
       <form onSubmit={loginToApp}>
-        <input value={name} onChange={e => setName(e.target.value)} type="text" placeholder='Full Name (required when registering)' />
-        <input value={profilePic} onChange={e => setprofilePic(e.target.value)} type="text" placeholder='Profile picture URL' />
+        <input value={name} onChange={e => setName(e.target.value)} type="text" placeholder='Full Name (Required when registering)' />
+        <input value={profilePic} onChange={e => setprofilePic(e.target.value)} type="text" placeholder='Profile picture URL (Optional)' />
         <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder='Email' required />
         <input value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder='Password' required />
 

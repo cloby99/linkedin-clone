@@ -1,7 +1,8 @@
 .feed {
     /* flex: 0.6; */
-    width: 40rem;
+    width: 35rem;
     margin: 0 20px;
+    padding-bottom: 25px;
 }
 
 /* .middle__line {

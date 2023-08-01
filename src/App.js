@@ -34,19 +34,22 @@ function App() {
     <div className="app">
 
       {/* Header */}
-      <Header />
+      
 
       {!user ? (
         <Login />
       ) : (
-
-      <div className="app__body">
-        <Sidebar />
-
-        <Feed />
-        <Widgets />
-      
-      </div>
+        
+        <div>
+          <Header />
+          <div className="app__body">
+            
+            <Sidebar />
+            <Feed />
+            <Widgets />
+          
+          </div>
+        </div>
 
       )}
 

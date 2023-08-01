@@ -1,17 +1,26 @@
 .login {
-    display: grid;
+    /* display: grid;
     place-items: center;
     margin-left: auto;
     margin-right: auto;
     padding-top: 100px;
-    padding-bottom: 100px;
+    padding-bottom: 200px;
+    overflow-y: hidden;
+    height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+    
 }
 
 .login > img {
     object-fit: contain;
     height: 70px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 50px;
 }
 
 .login > form {
@@ -36,13 +45,16 @@
     color: white;
     background-color: #0074b1;
     border-radius: 5px;
+    /* margin-top: 20px; */
+
 }
 
 .login__register {
+    margin-top: 5px;
     color: #0177b7;
     cursor: pointer;
 }
 
 .login > p {
-    margin-top: 20px;
+    margin-top: 25px;
 }
